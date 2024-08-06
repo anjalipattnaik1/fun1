@@ -1,3 +1,5 @@
+MINI PROJECT NO-4
+
 
 CREATE TABLE Bank(
 Bank_name varchar(100) NOT NULL,
@@ -38,7 +40,38 @@ insert into customer values('Rojaline' , 9527546845 , 'OD 009' )
 insert into customer values('Anshuman' , 9853454823 , 'OD 012' )
 
 
+create table account(
+account_number int  primary key,
+account_type varchar(20) not null,
+balance int not null,
+Branch_id int foreign key REFERENCES branch(branch_id) on DELETE CASCADE
+
+)
+
+--insert into account values(account_number, account_type,balance_in,balance_id)
+insert into account values('1961020002' , 'saving' , 250000 , 1)
+insert into account values('1961020003' , 'current' , 35000 , 2)
+insert into account values('1961020004' , 'saving' , 254632 , 3)
+
+
+create table loan(
+loan_id int identity(1,1) primary key,
+loan_type nchar(2) check (loan_type = 'PL' or loan_type = 'HL'),
+amount nvarchar(20) not null,
+branch_id int foreign key REFERENCES Branch(Branch_id) on delete CASCADE
+
+)
+--insert into loan values(loan_id,loan_type,amount,branch)
+insert into loan values('HL' , '852365',1)
+insert into loan values('PL' , '5846652',2)
+insert into loan values('HL' , '4562875',3)
+
+
 
 SELECT * from Bank;
 SELECT * from Branch;
 SELECT * from customer;
+SELECT * from account;
+select * from loan;
+
+
